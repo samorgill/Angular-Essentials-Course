@@ -1,0 +1,13 @@
+
+#todo {
+  border: lightgrey solid 0.5px;
+  border-radius: 2px;
+  margin-bottom: 1em;
+  padding: 0 1em;
+}
+
+.selected {
+  background-color: #ffd740;
+  transform: scale(1.01);
+}
+

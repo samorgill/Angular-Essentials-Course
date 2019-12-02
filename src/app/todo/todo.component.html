@@ -1,0 +1,26 @@
+<h1>{{appName}}</h1>
+
+<app-todo-detail *ngIf="selectedTodo" [todo]="selectedTodo"></app-todo-detail>
+
+<div id="list">
+  <h2>Todo List</h2>
+  <div id="todo" *ngFor="let todo of todos"
+       (click)="onSelect(todo)"
+       [ngClass]="todo === selectedTodo ? 'selected' : ''"
+  >
+    <p style="margin-bottom: 0;">{{todo.id}} {{todo.name}}</p>
+    <p style="margin-top: 0; font-size: 10px"><small>{{todo.date | date}}</small></p>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
