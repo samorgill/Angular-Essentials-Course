@@ -4,6 +4,10 @@
   border-radius: 2px;
   margin-bottom: 1em;
   padding: 0 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .selected {

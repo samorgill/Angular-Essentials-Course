@@ -5,11 +5,13 @@
 <div id="list">
   <h2>Todo List</h2>
   <div id="todo" *ngFor="let todo of todos"
-       (click)="onSelect(todo)"
        [ngClass]="todo === selectedTodo ? 'selected' : ''"
   >
-    <p style="margin-bottom: 0;">{{todo.id}} {{todo.name}}</p>
-    <p style="margin-top: 0; font-size: 10px"><small>{{todo.date | date}}</small></p>
+    <div class="content"><p style="margin-bottom: 0;" (click)="onSelect(todo)">{{todo.id}} {{todo.name}}</p>
+      <p style="margin-top: 0; font-size: 10px"><small>{{todo.date | date}}</small></p></div>
+    <div class="btn">
+      <button mat-stroked-button color="warn" (click)="onClickDeleted(todo.id)">Delete</button>
+    </div>
   </div>
 </div>
 
