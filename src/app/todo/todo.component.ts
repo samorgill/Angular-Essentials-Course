@@ -32,19 +32,19 @@ export class TodoComponent implements OnInit {
 
   onClickDeleted(id: number) {
     this.todoService.deleteTodo(id)
-      .subscribe((todoArr: TodoModel[]) => {
-        this.todos = todoArr;
+      .subscribe(() => {
+        this.todoService.getTodos().subscribe(todos => this.todos = todos);
       });
   }
 
   onClickAdd() {
     this.todoService.addTodo(this.todo)
-      .subscribe((arr) => {
-        this.todos = arr;
+      .subscribe(() => {
         this.todo = {
           name: '',
           date: ''
         };
+        this.todoService.getTodos().subscribe(todos => this.todos = todos);
       });
   }
 

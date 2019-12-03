@@ -14,6 +14,7 @@ import {FormsModule} from '@angular/forms';
 import {TodoDetailComponent} from './todo-detail/todo-detail.component';
 import {HttpClientInMemoryWebApiModule} from 'angular-in-memory-web-api';
 import {APIService} from './_services/api.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {APIService} from './_services/api.service';
     FormsModule,
     HttpClientInMemoryWebApiModule.forRoot(
       APIService, {dataEncapsulation: false}
-    )
+    ),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

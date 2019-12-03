@@ -19,8 +19,8 @@ export class TodoDetailComponent implements OnInit {
 
   onClickUpdate(todo) {
     this.todoService.updateTodo(todo)
-      .subscribe((td: TodoModel) => {
-        console.log(td.name + ' updated');
+      .subscribe(() => {
+        this.todoService.getTodos().subscribe(todos => console.log(todos));
       });
   }
 }

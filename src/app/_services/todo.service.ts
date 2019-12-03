@@ -2,33 +2,37 @@ import { Injectable } from '@angular/core';
 import {TODOS} from '../_helpers/mock-todos';
 import {TodoModel} from '../_models/todo.model';
 import {Observable, of} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  constructor() { }
+  private apiUrl = 'api/todos';
+
+  constructor(private http: HttpClient) { }
 
   getTodos(): Observable<TodoModel[]> {
-    return of(TODOS);
+    return this.http.get<TodoModel[]>(this.apiUrl);
+  }
+
+  getTodo(id: number): Observable<TodoModel> {
+    return this.http.get<TodoModel>(this.apiUrl + `/${id}`);
   }
 
   updateTodo(td: TodoModel) {
-    const newTodo = TODOS.find(todo => todo.id === td.id);
-    return of(newTodo);
+    return this.http.put<TodoModel>(this.apiUrl, td);
   }
 
   deleteTodo(id: number) {
-    const arr = TODOS.filter(td => td.id !== id);
-    return of(arr);
+
+    const apiUrl = this.apiUrl + `/${id}`;
+    return this.http.delete(apiUrl);
   }
 
   addTodo(todo: TodoModel) {
-    const length = TODOS.length;
-    const id = TODOS.length + 1;
-    todo.id = 4;
-    TODOS.push(todo);
-    return of(TODOS);
+
+    return this.http.post<TodoModel>(this.apiUrl, todo);
   }
 }
