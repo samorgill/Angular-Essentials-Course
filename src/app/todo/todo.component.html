@@ -15,6 +15,34 @@
   </div>
 </div>
 
+<hr>
+
+<form id="form" *ngIf="todo">
+  <h2>Add Todo</h2>
+  <mat-form-field style="margin-right: 1em">
+    <input type="text"
+           matInput
+           placeholder="Enter todo"
+           name="name"
+           [(ngModel)]="todo.name"
+    >
+  </mat-form-field>
+
+  <mat-form-field style="margin-right: 1em">
+    <input matInput
+           [matDatepicker]="picker"
+           placeholder="Choose a date"
+           name="date"
+           [(ngModel)]="todo.date"
+    >
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-flat-button color="primary" (click)="onClickAdd()">Add Todo</button>
+</form>
+
+
 
 
 

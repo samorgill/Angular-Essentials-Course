@@ -23,4 +23,12 @@ export class TodoService {
     const arr = TODOS.filter(td => td.id !== id);
     return of(arr);
   }
+
+  addTodo(todo: TodoModel) {
+    const length = TODOS.length;
+    const id = TODOS.length + 1;
+    todo.id = 4;
+    TODOS.push(todo);
+    return of(TODOS);
+  }
 }

@@ -13,6 +13,10 @@ export class TodoComponent implements OnInit {
 
   todos: TodoModel[];
   selectedTodo: TodoModel;
+  todo: TodoModel = {
+    name: '',
+    date: ''
+  };
 
   constructor(private todoService: TodoService) { }
 
@@ -32,4 +36,17 @@ export class TodoComponent implements OnInit {
         this.todos = todoArr;
       });
   }
+
+  onClickAdd() {
+    this.todoService.addTodo(this.todo)
+      .subscribe((arr) => {
+        this.todos = arr;
+        this.todo = {
+          name: '',
+          date: ''
+        };
+      });
+  }
+
+
 }
